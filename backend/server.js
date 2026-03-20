@@ -95,7 +95,7 @@ async function start() {
     // Explicitly check for missing URI in production
     if (!process.env.MONGO_URI && process.env.NODE_ENV === 'production') {
        console.error('❌ MONGODB ERROR: MONGO_URI environment variable is NOT SET.');
-       console.error('⚠️ FIX: Go to Render Dashboard > Environment > Add MONGO_URI.');
+       console.error('⚠️ FIX: Go to Railway Dashboard > Variables > Add MONGO_URI.');
        process.exit(1);
     }
 

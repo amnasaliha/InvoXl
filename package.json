@@ -5,11 +5,13 @@
   "engines": {
     "node": ">=18.0.0"
   },
+  "workspaces": [
+    "backend",
+    "frontend"
+  ],
   "scripts": {
-    "start": "cd backend && npm start",
-    "build": "cd backend && npm install && cd ../frontend && npm install && npm run build",
-    "install:backend": "cd backend && npm install",
-    "install:frontend": "cd frontend && npm install",
-    "build:frontend": "cd frontend && npm run build"
+    "start": "npm start -w backend",
+    "build": "npm run build -w frontend",
+    "install:all": "npm install"
   }
 }
