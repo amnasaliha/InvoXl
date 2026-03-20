@@ -13,7 +13,7 @@ const { saveInvoices } = require('../utils/invoiceService');
 const uploadsDir = path.join(__dirname, '../uploads');
 if (!fs.existsSync(uploadsDir)) fs.mkdirSync(uploadsDir, { recursive: true });
 
-const upload = multer({ dest: 'uploads/' });
+const upload = multer({ dest: uploadsDir });
 
 // 3. Route Fix - Path matches /api/extract
 router.post('/extract', auth, upload.single('file'), async (req, res) => {

@@ -5,7 +5,8 @@ const User = require('../models/User');
 
 const bcrypt = require('bcryptjs');
 
-const signToken = (id) => jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '7d' });
+const secret = process.env.JWT_SECRET || "default_secret";
+const signToken = (id) => jwt.sign({ id }, secret, { expiresIn: '7d' });
 
 router.post('/register', async (req, res) => {
   try {
