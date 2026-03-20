@@ -7,6 +7,6 @@ import axios from 'axios';
 // API Base URL config for deployment
 const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5001';
 axios.defaults.baseURL = API_URL;
-window.API_BASE_URL = API_URL; // Accessible for native fetch calls
+// Native fetch calls will use process.env.REACT_APP_API_URL || 'http://localhost:5001'
 
 ReactDOM.createRoot(document.getElementById('root')).render(<React.StrictMode><App /></React.StrictMode>);
