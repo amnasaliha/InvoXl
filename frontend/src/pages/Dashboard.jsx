@@ -122,7 +122,7 @@ export default function Dashboard() {
 
   const handleExport = async () => {
     try {
-      const response = await fetch("/api/export/excel", {
+      const response = await fetch((window.API_BASE_URL || '') + "/api/export/excel", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('invoxl_token')}`
         }

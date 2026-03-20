@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 
 // Configure axios base URL and auth interceptor once
-const api = axios.create({ baseURL: '/api' });
+const api = axios.create({ baseURL: (window.API_BASE_URL || '') + '/api' });
 api.interceptors.request.use(config => {
   const token = localStorage.getItem('invoxl_token');
   if (token) config.headers.Authorization = `Bearer ${token}`;
@@ -155,7 +155,7 @@ export default function Upload() {
 
       // 1. Proxy Fix (Frontend) - Calling relative path /api/extract
       // 7. Frontend Upload Fix - fetch POST with body formData 
-      const res = await fetch('/api/extract', {
+      const res = await fetch((window.API_BASE_URL || '') + '/api/extract', {
         method: 'POST',
         headers: { Authorization: `Bearer ${token}` },
         body: formData,
@@ -210,7 +210,7 @@ export default function Upload() {
       const token = localStorage.getItem('invoxl_token');
       // ✅ /api/export/excel for xlsx, /api/invoices/export/csv for csv
       const urlPath = type === 'xlsx' ? '/api/export/excel' : `/api/invoices/export/${type}`;
-      const res = await fetch(urlPath, {
+      const res = await fetch((window.API_BASE_URL || '') + urlPath, {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (!res.ok) throw new Error('Export failed');

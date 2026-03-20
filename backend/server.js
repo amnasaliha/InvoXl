@@ -9,8 +9,19 @@ const fs       = require('fs');
 
 const app = express();
 
+// Ensure uploads folder exists
+const uploadDir = path.join(__dirname, 'uploads');
+if (!fs.existsSync(uploadDir)) {
+  fs.mkdirSync(uploadDir, { recursive: true });
+  console.log('✅ Created uploads directory');
+}
+
 // 5. CORS Fix
-app.use(cors());
+app.use(cors({
+  origin: true, // Allow all origins during development and handle dynamic origins
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));

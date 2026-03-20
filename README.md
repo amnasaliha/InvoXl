@@ -393,6 +393,34 @@ node fix_dates.js
 
 ---
 
+---
+
+## 14. Deployment Guide
+
+### 🅰️ Frontend (Netlify)
+1.  **Connect to GitHub**: Link your repository.
+2.  **Build Settings**:
+    -   **Base directory**: `frontend`
+    -   **Build command**: `npm run build`
+    -   **Publish directory**: `build`
+3.  **Environment Variables**:
+    -   Add `REACT_APP_API_URL` = `https://your-backend.onrender.com`
+4.  **SPA Routing**: The `netlify.toml` in the project root handles redirects for React Router.
+
+### 🅱️ Backend (Render)
+1.  **Create Web Service**: Connect to GitHub.
+2.  **Build Settings**:
+    -   **Root Directory**: `backend`
+    -   **Build Command**: `npm install`
+    -   **Start Command**: `node server.js`
+3.  **Environment Variables**:
+    -   `MONGO_URI` = Your MongoDB Atlas connection string.
+    -   `JWT_SECRET` = A strong secret key.
+    -   `PORT` = `10000` (Render's default, handles internally).
+    -   `OPENAI_API_KEY` = Your OpenAI key for AI features.
+
+---
+
 ## License
 
 Private project. All rights reserved.
