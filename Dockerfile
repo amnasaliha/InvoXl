@@ -20,5 +20,12 @@ RUN npm install -w backend --production
 COPY backend/ ./backend/
 COPY --from=builder /app/frontend/build ./frontend/build
 
+# Final environment and launch
+ENV NODE_ENV=production
+ENV PYTHONUNBUFFERED=1
+
 EXPOSE 5001
-CMD ["npm", "start", "-w", "backend"]
+
+# Direct launch for better memory/stability
+# Usage: CMD ["node", "folder/file"]
+CMD ["node", "backend/server.js"]
