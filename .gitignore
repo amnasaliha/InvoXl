@@ -1,0 +1,32 @@
+# Node modules
+node_modules/
+
+# Environment variables
+.env
+
+# Python cache
+__pycache__/
+
+# Uploads directory
+uploads/
+
+# Build artifacts
+build/
+dist/
+
+# Log files
+*.log
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE settings
+.vscode/
+.idea/
+.project
+
+# Local database/data
+*.db
+*.sqlite
+data/
