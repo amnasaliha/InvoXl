@@ -90,12 +90,13 @@ const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/invoxl';
 
 async function start() {
   try {
-    const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/invoxl';
+    // Handle dynamic Mongo variable names (Railway vs Atlas)
+    const MONGO_URI = process.env.MONGO_URI || process.env.MONGO_URL || process.env.MONGODB_URL || process.env.DATABASE_URL || 'mongodb://localhost:27017/invoxl';
     
     // Explicitly check for missing URI in production
-    if (!process.env.MONGO_URI && process.env.NODE_ENV === 'production') {
-       console.error('❌ MONGODB ERROR: MONGO_URI environment variable is NOT SET.');
-       console.error('⚠️ FIX: Go to Railway Dashboard > Variables > Add MONGO_URI.');
+    if (!MONGO_URI || (MONGO_URI.includes('localhost') && process.env.NODE_ENV === 'production')) {
+       console.error('❌ MONGODB ERROR: Database URL environment variable is NOT SET or is pointing to localhost.');
+       console.error('⚠️ FIX: Go to Railway Dashboard > Variables > Add MONGO_URI or MONGO_URL.');
        process.exit(1);
     }
 
