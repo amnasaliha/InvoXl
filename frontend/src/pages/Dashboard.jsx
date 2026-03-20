@@ -122,12 +122,13 @@ export default function Dashboard() {
 
   const handleExport = async () => {
     try {
-      const apiBase = process.env.REACT_APP_API_URL || 'http://localhost:5001';
-      const response = await fetch(apiBase + "/api/export/excel", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('invoxl_token')}`
-        }
-      });
+    const isProd = process.env.NODE_ENV === 'production';
+    const apiBase = process.env.REACT_APP_API_URL || (isProd ? window.location.origin : 'http://localhost:5001');
+    const response = await fetch(apiBase + "/api/export/excel", {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('invoxl_token')}`
+      }
+    });
       if(!response.ok) throw new Error("Failed to generate excel");
       const blob = await response.blob();
       const url = window.URL.createObjectURL(blob);
