@@ -1,10 +1,10 @@
-rasya banu
+simran khan
 ---LINE---
-abbas line 
+aslam aata mil 
 ---LINE---
-darga road ervadi 
+Turk Bigha, Nasriganj, Rohtas District 
 ---LINE---
-ramanathapuram, Tamil Nadu, 623566
+Rohtas District, Bihar, 821309
 ---LINE---
 If undelivered, return to: 
 ---LINE---
@@ -26,25 +26,21 @@ Pickup
 ---LINE---
 Destination Code
 ---LINE---
-Ramnthpurm_TnhbBlk 
+Piro_Bachri_D 
 ---LINE---
-C_D 
----LINE---
-(Tamil 
----LINE---
-Nadu) 
+(Bihar) 
 ---LINE---
 Return Code
 ---LINE---
 641008,109897
 ---LINE---
-1490829099934720
+1490828264628931
 ---LINE---
 Product Details
 ---LINE---
 SKUSizeQtyColorOrder No.
 ---LINE---
-JHJRF5OxFree Size1NA263723526631953856_1
+HAC8Free Size1NA259838944459160960_1
 ---LINE---
 TAX INVOICE
 ---LINE---
@@ -52,11 +48,11 @@ Original For Recipient
 ---LINE---
 BILL TO / SHIP TO 
 ---LINE---
-Rasya Banu - abbas line , darga road ervadi, 
+Simran Khan - aslam aata mil  , Turk Bigha, Nasriganj, 
 ---LINE---
-ramanathapuram, Tamil Nadu, 623566, Place of Supply: 
+Rohtas District , Rohtas District, Bihar, 821309, Place of 
 ---LINE---
-Tamil Nadu
+Supply: Bihar
 ---LINE---
 Sold by : PIK FRAGINCENCE 
 ---LINE---
@@ -68,53 +64,57 @@ GSTIN - 33AAUFP8468M1Z7
 ---LINE---
 Purchase Order No.
 ---LINE---
-263723526631953856
+259838944459160960
 ---LINE---
 Invoice No.
 ---LINE---
-nvang2657551
+nvang2655441
 ---LINE---
 Order Date
 ---LINE---
-12.03.2026
+02.03.2026
 ---LINE---
 Invoice Date
 ---LINE---
-12.03.2026
+02.03.2026
 ---LINE---
 DescriptionHSNQtyGross AmountDiscountTaxable ValueTaxesTotal
 ---LINE---
-Hasi combo pack for pooja 
+Hasi 8 combo pack | 8 
 ---LINE---
-use - Attar | 8 different 
+different fragrances | long 
 ---LINE---
-perfume | For men and 
+lasting fragrances | For men 
 ---LINE---
-Women| Long lasting 
+and Women | Office and party 
 ---LINE---
-Perfume - Free Size 
+use | Attar | Ittar | Jamsine , 
 ---LINE---
-33011Rs.153.00Rs.11.00Rs.120.34
+Lemon , White Oud , Legend 
 ---LINE---
-SGST @9.0% 
+, Biscuit , Flavour , Jannatul 
 ---LINE---
-:Rs.10.83 
+Firdaus , Done perfumes - 
 ---LINE---
-CGST @9.0% 
+Free Size 
 ---LINE---
-:Rs.10.83
+33011Rs.183.00Rs.0.00Rs.155.08
 ---LINE---
-Rs.142.00
+IGST @18.0% 
 ---LINE---
-Other Charges3301NARs.7.00Rs.0Rs.5.92
+Rs.27.92
 ---LINE---
-SGST @9.0% :Rs.0.54 
+Rs.183.00
 ---LINE---
-CGST @9.0% :Rs.0.54
+Other Charges3301NARs.0.00Rs.0Rs.0.00
 ---LINE---
-Rs.7.00
+IGST @18.0% 
 ---LINE---
-TotalRs.22.74Rs.149.00
+Rs.0.00
+---LINE---
+Rs.0.00
+---LINE---
+TotalRs.27.92Rs.183.00
 ---LINE---
 Tax is not payable on reverse charge basis. This is a computer generated invoice and does not require signature. Other charges are charges that are 
 ---LINE---

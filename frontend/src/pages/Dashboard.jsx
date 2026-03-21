@@ -57,7 +57,6 @@ export default function Dashboard() {
   const [summary, setSummary] = useState(null);
   const [byDate, setByDate]   = useState([]);
   const [byState, setByState] = useState([]);
-  const [platforms, setPlatforms] = useState([]);
   const [topProducts, setTopProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -93,13 +92,6 @@ export default function Dashboard() {
           setByState(data.stateBreakdown.map(x => ({
             state: x.state,
             revenue: x.revenue
-          })));
-        }
-
-        if (data.platformDistribution?.length) {
-          setPlatforms(data.platformDistribution.map(x => ({
-            name: x.platform,
-            value: x.revenue
           })));
         }
 
@@ -178,7 +170,7 @@ export default function Dashboard() {
         </div>
 
         {/* Charts row 1 */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1.6fr 1fr', gap: '14px', marginBottom: '14px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1.6fr 1.6fr', gap: '14px', marginBottom: '14px' }}>
 
           <div style={chartCard}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '22px' }}>
@@ -192,7 +184,7 @@ export default function Dashboard() {
               </div>
             </div>
             {byDate.length > 0 ? (
-              <ResponsiveContainer width="100%" height={200}>
+              <ResponsiveContainer width="100%" height={240}>
                 <LineChart data={byDate}>
                   <CartesianGrid {...gridProps} />
                   <XAxis dataKey="date" {...axisProps} />
@@ -208,25 +200,40 @@ export default function Dashboard() {
 
           <div style={chartCard}>
             <div style={{ marginBottom: '22px' }}>
-              <h3 style={{ fontFamily: "'Outfit', sans-serif", fontWeight: '700', fontSize: '14px', color: 'var(--ink)' }}>Platform Distribution</h3>
-              <p style={{ fontSize: '11px', color: 'var(--ink3)', marginTop: '3px' }}>Revenue share by platform</p>
+              <h3 style={{ fontFamily: "'Outfit', sans-serif", fontWeight: '700', fontSize: '14px', color: 'var(--ink)' }}>Top Selling Products</h3>
+              <p style={{ fontSize: '11px', color: 'var(--ink3)', marginTop: '3px' }}>Highest revenue generators</p>
             </div>
-            {platforms.length > 0 ? (
-              <ResponsiveContainer width="100%" height={200}>
-                <PieChart>
-                  <Pie data={platforms} cx="50%" cy="50%" innerRadius={54} outerRadius={80} dataKey="value" paddingAngle={3}>
-                    {platforms.map((_, i) => <Cell key={i} fill={PALETTE[i % PALETTE.length]} />)}
-                  </Pie>
-                  <Tooltip contentStyle={{ background: 'var(--depth3)', border: '1px solid var(--rim2)', borderRadius: '10px', fontSize: '12px', fontFamily: "'DM Mono', monospace" }} />
-                  <Legend iconType="circle" iconSize={7} formatter={v => <span style={{ color: 'var(--ink3)', fontSize: '11px' }}>{v}</span>} />
-                </PieChart>
-              </ResponsiveContainer>
-            ) : emptyState('No platform data yet')}
+            {topProducts.length > 0 ? (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                {topProducts.map((p, i) => (
+                  <div key={i} style={{ 
+                    display: 'flex', alignItems: 'center', gap: '14px', 
+                    padding: '12px', background: 'var(--depth3)', 
+                    borderRadius: '12px', border: '1px solid var(--rim2)'
+                  }}>
+                    <div style={{ 
+                      width: '32px', height: '32px', borderRadius: '8px', 
+                      background: `${PALETTE[i % PALETTE.length]}15`, 
+                      border: `1px solid ${PALETTE[i % PALETTE.length]}30`,
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      fontFamily: "'DM Mono', monospace", fontSize: '13px', color: PALETTE[i % PALETTE.length], fontWeight: '600'
+                    }}>{i + 1}</div>
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <p style={{ fontSize: '13px', color: 'var(--ink)', fontWeight: '600', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{p.name}</p>
+                      <p style={{ fontSize: '10px', color: 'var(--ink4)', marginTop: '2px' }}>{p.orders} Orders</p>
+                    </div>
+                    <div style={{ textAlign: 'right' }}>
+                      <p style={{ fontSize: '13px', color: 'var(--ink)', fontFamily: "'DM Mono', monospace", fontWeight: '600' }}>₹{p.revenue.toLocaleString()}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : emptyState('No product data yet')}
           </div>
         </div>
 
         {/* Charts row 2 */}
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '14px' }}>
 
           <div style={chartCard}>
             <div style={{ marginBottom: '22px' }}>
@@ -234,7 +241,7 @@ export default function Dashboard() {
               <p style={{ fontSize: '11px', color: 'var(--ink3)', marginTop: '3px' }}>Revenue by region</p>
             </div>
             {byState.length > 0 ? (
-              <ResponsiveContainer width="100%" height={200}>
+              <ResponsiveContainer width="100%" height={240}>
                 <BarChart data={byState}>
                   <CartesianGrid {...gridProps} />
                   <XAxis dataKey="state" {...axisProps} />
@@ -247,27 +254,8 @@ export default function Dashboard() {
               </ResponsiveContainer>
             ) : emptyState('No state data yet')}
           </div>
-
-          <div style={chartCard}>
-            <div style={{ marginBottom: '22px' }}>
-              <h3 style={{ fontFamily: "'Outfit', sans-serif", fontWeight: '700', fontSize: '14px', color: 'var(--ink)' }}>Inventory Success</h3>
-              <p style={{ fontSize: '11px', color: 'var(--ink3)', marginTop: '3px' }}>Best selling products</p>
-            </div>
-            {topProducts.length > 0 ? (
-              <ResponsiveContainer width="100%" height={200}>
-                <BarChart data={topProducts} layout="vertical" margin={{ left: -20, right: 10 }}>
-                  <CartesianGrid {...gridProps} horizontal={true} vertical={false} />
-                  <XAxis type="number" {...axisProps} />
-                  <YAxis type="category" dataKey="name" {...axisProps} width={100} tickFormatter={v => v.length > 12 ? v.substring(0,12)+'...' : v} />
-                  <Tooltip content={<ChartTip />} />
-                  <Bar dataKey="revenue" radius={[0,5,5,0]}>
-                    {topProducts.map((_, i) => <Cell key={i} fill={['#f59e0b','#3b82f6','#7c3aed','#14b8a6'][i % 4]} />)}
-                  </Bar>
-                </BarChart>
-              </ResponsiveContainer>
-            ) : emptyState('No product data yet')}
-          </div>
         </div>
+
 
       </div>
     </div>
